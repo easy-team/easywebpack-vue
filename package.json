@@ -1,0 +1,56 @@
+{
+  "name": "easywebpack-vue",
+  "version": "0.1.0",
+  "description": "vue webpack building solution for easywebpack",
+  "keywords": [
+    "webpack",
+    "easywebpack",
+    "vue"
+  ],
+  "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "easywebpack": "^0.3.0",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^11.3.4",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "eslint": "^3.18.0",
+    "eslint-config-eslint": "^4.0.0",
+    "mocha": "^3.4.2"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "test": "mocha test",
+    "ci": "npm run lint && npm run cov"
+  },
+  "files": [
+    "index.js",
+    "app.js",
+    "agent.js",
+    "config",
+    "app",
+    "lib",
+    "builder"
+  ],
+  "ci": {
+    "version": "6, 7, 8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubcarl/easywebpack-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hubcarl/easywebpack-vue/issues"
+  },
+  "homepage": "https://github.com/hubcarl/easywebpack-vue#readme",
+  "author": "hubcarl@126.com",
+  "license": "MIT"
+}
