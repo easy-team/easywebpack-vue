@@ -10,21 +10,33 @@
   "dependencies": {
     "autoprefixer": "^6.7.7",
     "easywebpack": "^0.3.0",
+    "vue": "^2.3.4",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^11.3.4",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.2"
   },
   "devDependencies": {
+    "axios": "^0.16.2",
     "chai": "^4.0.0",
+    "cross-env": "^5.0.1",
     "eslint": "^3.18.0",
     "eslint-config-eslint": "^4.0.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1",
+    "vuex-router-sync": "^4.2.0"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production node test/build",
+    "build-dev": "cross-env NODE_ENV=development node test/build",
+    "build-client": "BUILD_ENV=client npm run build",
+    "build-server": "BUILD_ENV=server npm run build",
+    "build-client-dev": "BUILD_ENV=client npm run build-dev",
+    "build-server-dev": "BUILD_ENV=server npm run build-dev",
     "start": "node index.js",
     "lint": "eslint .",
     "fix": "eslint --fix .",
@@ -33,12 +45,7 @@
   },
   "files": [
     "index.js",
-    "app.js",
-    "agent.js",
-    "config",
-    "app",
-    "lib",
-    "builder"
+    "lib"
   ],
   "ci": {
     "version": "6, 7, 8"

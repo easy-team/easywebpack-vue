@@ -8,3 +8,5 @@ run/
 *.swp
 .vscode
 *.iml
+dist
+public/
