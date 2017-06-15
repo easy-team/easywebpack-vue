@@ -1,3 +1,4 @@
+'use strict';
 const WebpackClientBuilder = require('../../../lib/client');
 const WebpackBaseBuilder = require('../base');
 class ClientProdBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {

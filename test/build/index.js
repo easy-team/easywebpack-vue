@@ -1,4 +1,5 @@
-const EasyWebpack = require('easywebpack');
+'use strict';
+const VueWebpack = require('../../index');
 const clientConfig = require('./client');
 const serverConfig = require('./server');
 const BUILD_ENV = process.env.BUILD_ENV;
@@ -10,4 +11,15 @@ if (BUILD_ENV === 'client') {
 } else {
   Array.prototype.push.apply(buildConfig, [clientConfig, serverConfig]);
 }
-EasyWebpack.build(buildConfig);
+
+const config = {
+  port: 8881,
+  webpackConfig: buildConfig
+};
+
+if (process.env.NODE_SERVER) {
+  VueWebpack.server(config);
+} else {
+  VueWebpack.build(config);
+}
+
