@@ -70,7 +70,7 @@ class ClientBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
 module.exports = new ClientBuilder().create();
 ```
 
-### webpack node ssr config `server.js
+### webpack node ssr config `server.js`
 
 ```js
 'use strict';
