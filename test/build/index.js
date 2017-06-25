@@ -12,14 +12,9 @@ if (BUILD_ENV === 'client') {
   Array.prototype.push.apply(buildConfig, [clientConfig, serverConfig]);
 }
 
-const config = {
-  port: 8881,
-  webpackConfig: buildConfig
-};
-
 if (process.env.NODE_SERVER) {
-  VueWebpack.server(config);
+  VueWebpack.server(buildConfig);
 } else {
-  VueWebpack.build(config);
+  VueWebpack.build(buildConfig);
 }
 

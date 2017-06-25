@@ -6,6 +6,7 @@ class ClientDevBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
     super(config);
     this.setDevTool(false);
     this.setCssExtract(false);
+    this.setHtml(true);
   }
 }
 module.exports = new ClientDevBuilder().create();

@@ -88,9 +88,7 @@ module.exports = new ServerBuilder().create();
 const VueWebpack = require('easywebpack-vue');
 const clientConfig = require('./client');
 const serverConfig = require('./server');
-const config = { 
-   webpackConfig: [clientConfig, serverConfig]
-};
+const config = [clientConfig, serverConfig]
 
 if (process.env.NODE_SERVER) {
   // development mode: webpack building and start webpack hot server

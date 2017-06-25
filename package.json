@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "0.2.0",
+  "version": "0.5.3",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "autoprefixer": "^6.7.7",
-    "easywebpack": "^0.4.0",
+    "easywebpack": "^0.5.5",
     "vue": "^2.3.4",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^11.3.4",
@@ -37,11 +37,12 @@
     "build-server": "BUILD_ENV=server npm run build",
     "build-client-dev": "BUILD_ENV=client npm run build-dev",
     "build-server-dev": "BUILD_ENV=server npm run build-dev",
-    "start" : "cross-env NODE_SERVER=true NODE_ENV=development node test/build",
+    "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build",
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "test": "mocha test",
-    "ci": "npm run lint && npm run cov"
+    "ci": "npm run lint && npm run cov",
+    "ii": "npm install --registry https://registry.npm.taobao.org"
   },
   "files": [
     "index.js",
