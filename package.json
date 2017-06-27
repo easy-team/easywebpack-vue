@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
