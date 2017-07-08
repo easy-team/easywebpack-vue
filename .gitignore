@@ -10,3 +10,5 @@ run/
 *.iml
 dist
 public/
+config/buildConfig.json
+config/manifest.json

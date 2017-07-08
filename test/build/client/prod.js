@@ -7,4 +7,7 @@ class ClientProdBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
     this.setCssExtract(true);
   }
 }
+const config = new ClientProdBuilder().create();
+console.log(config.module.rules[0].options.loaders);
+console.log(config.plugins);
 module.exports = new ClientProdBuilder().create();

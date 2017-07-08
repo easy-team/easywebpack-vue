@@ -1,24 +1,19 @@
 'use strict';
 const path = require('path');
-const EasyWebpack = require('easywebpack');
-const merge = EasyWebpack.merge;
 const baseDir = path.join(__dirname, '../../../');
-const webpackConfig = {
-  baseDir,
-  build: {
-    entry: path.join(baseDir, 'test/web/page'),
-    template: path.join(baseDir, 'test/web/view/layout.html'),
-  }
-};
 const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
-  constructor(config) {
-    super(merge(webpackConfig, config));
-    this.setEntry('vendor', ['vue']);
-    this.setAlias('asset', path.join(this.config.baseDir, 'test/web/asset'));
-    this.setAlias('app', path.join(this.config.baseDir, 'test/web/framework/vue/app'));
-    this.setAlias('component', path.join(this.config.baseDir, 'test/web/component'));
-    this.setAlias('framework', path.join(this.config.baseDir, 'test/web/framework'));
-    this.setAlias('store', path.join(this.config.baseDir, 'test/web/store'));
+  constructor() {
+    super(baseDir);
+    this.setEntry('test/web/page');
+    this.setBuildPath('public');
+    this.setPublicPath('/public/');
+    this.setAlias('asset', path.join(baseDir, 'test/web/asset'));
+    this.setAlias('app', path.join(baseDir, 'test/web/framework/vue/app'));
+    this.setAlias('component', path.join(baseDir, 'test/web/component'));
+    this.setAlias('framework', path.join(baseDir, 'test/web/framework'));
+    this.setAlias('store', path.join(baseDir, 'test/web/store'));
+    this.addEntry('vendor', ['vue']);
+    this.setCommonsChunk('vendor');
   }
 };
 module.exports = WebpackBaseBuilder;
