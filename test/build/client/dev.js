@@ -6,6 +6,7 @@ class ClientDevBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
     super(baseDir);
     this.setDevTool(false);
     this.setCssExtract(false);
+    this.setCommonsChunk('vendor');
   }
 }
 module.exports = new ClientDevBuilder().create();

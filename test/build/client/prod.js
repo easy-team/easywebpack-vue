@@ -5,6 +5,7 @@ class ClientProdBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
   constructor(config) {
     super(config);
     this.setCssExtract(true);
+    this.setCommonsChunk('vendor');
   }
 }
 const config = new ClientProdBuilder().create();
