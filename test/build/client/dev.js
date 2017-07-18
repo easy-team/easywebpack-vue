@@ -1,12 +1,10 @@
 'use strict';
-const WebpackClientBuilder = require('../../../lib/client');
-const WebpackBaseBuilder = require('../base');
-class ClientDevBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
-  constructor(baseDir) {
-    super(baseDir);
-    this.setDevTool(false);
-    this.setCssExtract(false);
-    this.setCommonsChunk('vendor');
+const WebpackClientBaseBuilder = require('./base');
+class ClientBuilder extends WebpackClientBaseBuilder {
+  constructor(config) {
+    super(config);
+    this.setEnv('dev');
+    this.setDevMode(9001)
   }
 }
-module.exports = new ClientDevBuilder().create();
+module.exports = new ClientBuilder().create();

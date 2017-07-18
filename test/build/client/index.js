@@ -1,2 +1,3 @@
 'use strict';
-module.exports = process.env.NODE_ENV === 'production' ? require('./prod') : require('./dev');
+const webpackConfig = process.env.NODE_ENV === 'production' ? require('./prod') : require('./dev');
+module.exports = webpackConfig;

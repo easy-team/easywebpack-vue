@@ -1,6 +1,9 @@
 'use strict';
-const WebpackServerBuilder = require('../../../lib/server');
-const WebpackBaseBuilder = require('../base');
-class ServerDevBuilder extends WebpackBaseBuilder(WebpackServerBuilder) {
+const WebpackServerBaseBuilder = require('./base');
+class WebpackBuilder extends WebpackServerBaseBuilder{
+  constructor(config) {
+    super(config);
+    this.setEnv('dev');
+  }
 }
-module.exports = new ServerDevBuilder().create();
+module.exports = new WebpackBuilder().create();

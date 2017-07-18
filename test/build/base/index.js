@@ -1,19 +1,16 @@
 'use strict';
 const path = require('path');
-const baseDir = path.join(__dirname, '../../../');
 const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
-  constructor() {
-    super(baseDir);
+  constructor(config) {
+    super(config);
     this.setEntry({
       include: 'test/web/page'
     });
-    this.setBuildPath('public');
-    this.setPublicPath('/public/');
-    this.setAlias('asset', path.join(baseDir, 'test/web/asset'));
-    this.setAlias('app', path.join(baseDir, 'test/web/framework/vue/app'));
-    this.setAlias('component', path.join(baseDir, 'test/web/component'));
-    this.setAlias('framework', path.join(baseDir, 'test/web/framework'));
-    this.setAlias('store', path.join(baseDir, 'test/web/store'));
+    this.setAlias('asset', 'test/web/asset');
+    this.setAlias('app', 'test/web/framework/vue/app');
+    this.setAlias('component', 'test/web/component');
+    this.setAlias('framework', 'test/web/framework');
+    this.setAlias('store', 'test/web/store');
     this.addEntry('vendor', ['vue']);
   }
 };
