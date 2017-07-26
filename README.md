@@ -25,10 +25,11 @@ egg webpack building solution for vue
 ## Install
 
 ```bash
-$ npm i easywebpack-vue --save
+$ npm i easywebpack-vue --save-dev
 ```
 
-## Usage
+## Usage [easywebpack-vue-project](http://hubcarl.github.io/easywebpack/vue/easywebpack-vue-project)
+
 
 ### webpack common config `base.js`
 
@@ -40,19 +41,34 @@ const merge = VueWebpack.merge;
 const baseDir = path.join(__dirname, '../../../');
 const webpackConfig = {
   baseDir,
-  build: {
-    entry: path.join(baseDir, 'test/web/page')
-  }
+  entry: {
+    include: 'app/web/page',
+    exclude: ['app/web/page/test']
+  },
+  html: {
+   include: ['app/web/page/html'],
+   exclude: [],
+   template: 'app/web/view/layout.html',
+   buildDir: 'html',
+  },
+  commonsChunk: ['vendor'],
 };
 const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
   constructor(config) {
     super(merge(webpackConfig, config));
     this.setEntry('vendor', ['vue']);
-    this.setAlias('asset', path.join(this.config.baseDir, 'test/web/asset'));
-    this.setAlias('app', path.join(this.config.baseDir, 'test/web/framework/vue/app'));
-    this.setAlias('component', path.join(this.config.baseDir, 'test/web/component'));
-    this.setAlias('framework', path.join(this.config.baseDir, 'test/web/framework'));
-    this.setAlias('store', path.join(this.config.baseDir, 'test/web/store'));
+    this.setAlias('asset', 'app/web/asset');
+    this.setAlias('component', 'app/web/component');
+    this.setAlias('framework', 'app/web/framework');
+    this.setAlias('store', 'app/web/store');
+    this.setAlias('app', 'app/web/framework/vue/app.js');
+    this.setStyleLoaderOption({
+      sass: {
+        options: {
+          includePaths: [path.join(this.config.baseDir, 'app/web/asset/style')],
+        }
+      }
+    });
   }
 };
 module.exports = WebpackBaseBuilder;
@@ -105,11 +121,6 @@ if (process.env.NODE_SERVER) {
 {
     "scripts": {
         "build": "cross-env NODE_ENV=production node test/build",
-        "build-dev": "cross-env NODE_ENV=development node test/build",
-        "build-client": "BUILD_ENV=client npm run build",
-        "build-server": "BUILD_ENV=server npm run build",
-        "build-client-dev": "BUILD_ENV=client npm run build-dev",
-        "build-server-dev": "BUILD_ENV=server npm run build-dev",
         "start" : "cross-env NODE_SERVER=true NODE_ENV=development node test/build"
      }   
 }
