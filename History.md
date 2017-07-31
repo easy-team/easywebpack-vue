@@ -1,4 +1,11 @@
 
+0.9.0 / 2017-07-31
+==================
+
+  * deps:upgrade easywebpack 0.9.0
+  * doc:update
+  * feat:support cli
+
 0.7.0 / 2017-07-18
 =================
 
