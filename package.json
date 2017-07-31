@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -10,9 +10,9 @@
   "dependencies": {
     "autoprefixer": "^6.7.7",
     "easywebpack": "^0.9.0",
-    "vue": "^2.3.4",
+    "vue": "^2.4.2",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^11.3.4",
+    "vue-loader": "^13.0.2",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.3.2"
   },
