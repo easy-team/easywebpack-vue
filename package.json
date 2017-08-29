@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,21 +8,21 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^1.0.1",
     "vue": "^2.4.2",
+    "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^13.0.2",
+    "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.3.2"
+    "vue-template-compiler": "^2.4.2"
   },
   "devDependencies": {
     "axios": "^0.16.2",
-    "chai": "^4.0.0",
-    "cross-env": "^5.0.1",
-    "eslint": "^3.18.0",
+    "chai": "^4.1.1",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.5.0",
     "eslint-config-eslint": "^4.0.0",
-    "mocha": "^3.4.2",
-    "vue-router": "^2.5.3",
+    "mocha": "^3.5.0",
+    "vue-router": "^2.7.0",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.2.0"
   },
