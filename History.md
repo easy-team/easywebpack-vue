@@ -1,4 +1,9 @@
 
+1.0.2 / 2017-08-29
+==================
+
+  * fix:windows loader not find, set resolveLoader
+
 1.0.1 / 2017-08-17
 ==================
 
