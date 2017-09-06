@@ -8,6 +8,7 @@
     "vue"
   ],
   "dependencies": {
+    "easywebpack": "^3.0.0-rc1",
     "vue": "^2.4.2",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
@@ -32,10 +33,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production node test/build",
     "build-dev": "cross-env NODE_ENV=development node test/build",
-    "build-client": "BUILD_ENV=client npm run build",
-    "build-server": "BUILD_ENV=server npm run build",
-    "build-client-dev": "BUILD_ENV=client npm run build-dev",
-    "build-server-dev": "BUILD_ENV=server npm run build-dev",
+    "build-client": "cross-env BUILD_ENV=client npm run build",
+    "build-server": "cross-env BUILD_ENV=server npm run build",
+    "build-client-dev": "cross-env BUILD_ENV=client npm run build-dev",
+    "build-server-dev": "cross-env BUILD_ENV=server npm run build-dev",
     "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build",
     "lint": "eslint .",
     "fix": "eslint --fix .",
@@ -46,6 +47,7 @@
   "files": [
     "index.js",
     "lib",
+    "config",
     "tool"
   ],
   "ci": {
