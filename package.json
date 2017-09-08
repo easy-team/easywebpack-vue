@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "3.0.0-rc1",
+  "version": "3.0.0",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,13 +8,14 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^3.0.0-rc1",
+    "easywebpack": "^3.0.0",
+    "eslint-plugin-vue": "^2.1.0",
     "vue": "^2.4.2",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2"
+    "vue-template-compiler": "^2.4.2",
   },
   "devDependencies": {
     "axios": "^0.16.2",
