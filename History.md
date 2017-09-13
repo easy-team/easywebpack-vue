@@ -1,8 +1,21 @@
 
+3.0.0 / 2017-09-08
+==================
+
+  * deps:easywebpack 3.0.0
+
 1.0.2 / 2017-08-29
 ==================
 
   * fix:windows loader not find, set resolveLoader
+
+
+3.0.0-rc1 / 2017-09-06
+======================
+
+  * deps:easywebpack3
+  * feat:webpack3 ing
+  * feat:webpack3
 
 1.0.1 / 2017-08-17
 ==================
