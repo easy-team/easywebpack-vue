@@ -20,7 +20,7 @@
 [download-image]: https://img.shields.io/npm/dm/easywebpack-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/easywebpack-vue
 
-egg webpack building solution for vue
+Webpack3 (3.x.x) and Webpack2 (1.x.x) building solution for Vue, Support client render and server side render build.
 
 ## Install
 
@@ -30,8 +30,69 @@ $ npm i easywebpack-vue --save-dev
 
 ## Usage [easywebpack-vue-project](http://hubcarl.github.io/easywebpack/vue/easywebpack-vue-project)
 
+support cli `easywebpack-cli` and extend `easywebpack-vue` building
 
-### webpack common config `base.js`
+### cli build
+
+#### 1. Install cli `easywebpack-cli`
+
+```bash
+$ npm i easywebpack-cli -g
+```
+
+#### 2. Add `webpack.config.js` in project root dir
+
+```js
+module.exports = {
+  framework: 'vue',
+  type: 'client',  // only build client render, default build client render and server render
+  entry: {
+    include: ['app/web/page'],
+    exclude: ['app/web/page/[a-z]+/component', 'app/web/page/test', 'app/web/page/html', 'app/web/page/app'],
+    template: 'app/web/view/layout.html'
+  },
+  alias: {
+    app: 'app/web/framework/vue/app.js',
+    asset: 'app/web/asset',
+    component: 'app/web/component',
+    framework: 'app/web/framework',
+    store: 'app/web/store'
+  },
+  loaders: {},
+  plugins: {
+    provide: false,
+    eslint: {
+      options: {
+        fix: true
+      }
+    }
+  }
+};
+```
+
+#### 3. Run
+
+```bash
+easywebpack server
+easywebpack server dev
+easywebpack server test
+easywebpack server prod
+```
+
+#### 4. Build
+
+```bash
+easywebpack build
+easywebpack build dev
+easywebpack build test
+easywebpack build prod
+```
+
+Example: [easywebpack-vue-test](https://github.com/hubcarl/easywebpack-vue/tree/master/test)
+
+### extend build
+
+#### 1. Webpack Common Config `base.js`
 
 ```js
 'use strict';
@@ -43,15 +104,9 @@ const webpackConfig = {
   baseDir,
   entry: {
     include: 'app/web/page',
-    exclude: ['app/web/page/test']
-  },
-  html: {
-   include: ['app/web/page/html'],
-   exclude: [],
-   template: 'app/web/view/layout.html',
-   buildDir: 'html',
-  },
-  commonsChunk: ['vendor'],
+    exclude: ['app/web/page/test'],
+    template: 'app/web/view/layout.html'
+  }
 };
 const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
   constructor(config) {
@@ -62,19 +117,12 @@ const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
     this.setAlias('framework', 'app/web/framework');
     this.setAlias('store', 'app/web/store');
     this.setAlias('app', 'app/web/framework/vue/app.js');
-    this.setStyleLoaderOption({
-      sass: {
-        options: {
-          includePaths: [path.join(this.config.baseDir, 'app/web/asset/style')],
-        }
-      }
-    });
   }
 };
 module.exports = WebpackBaseBuilder;
 ```
 
-### webpack browser config `client.js`
+#### 2. Webpack Browser Config `client.js`
 
 ```js
 'use strict';
@@ -86,7 +134,7 @@ class ClientBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
 module.exports = new ClientBuilder().create();
 ```
 
-### webpack node ssr config `server.js`
+#### 3. Webpack Node SSR Config `server.js`
 
 ```js
 'use strict';
@@ -98,7 +146,7 @@ class ServerBuilder extends WebpackBaseBuilder(WebpackServerBuilder) {
 module.exports = new ServerBuilder().create();
 ```
 
-### command run entry file `build.js`
+#### 4. Run Entry File `build.js`
 
 ```js
 const VueWebpack = require('easywebpack-vue');
@@ -115,25 +163,24 @@ if (process.env.NODE_SERVER) {
 }
 ```
 
-### commmand run
+#### 5. Run
 
 ```js
 {
-    "scripts": {
-        "build": "cross-env NODE_ENV=production node test/build",
-        "start" : "cross-env NODE_SERVER=true NODE_ENV=development node test/build"
-     }   
+  "scripts": {
+    "build": "cross-env NODE_ENV=production node test/build",
+    "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build"
+   }
 }
 ```
 
 ```bash
-
 npm start
-
 ```
 
 
 ## Example
+
 
 ![webpack-vue-compile](https://github.com/hubcarl/easywebpack-vue/blob/master/doc/images/webpack-vue-compile.png)
 
