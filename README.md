@@ -28,11 +28,11 @@ Webpack3 (3.x.x) and Webpack2 (1.x.x) building solution for Vue, Support client 
 $ npm i easywebpack-vue --save-dev
 ```
 
-## Usage [easywebpack-vue-project](http://hubcarl.github.io/easywebpack/vue/easywebpack-vue-project)
+## Usage
 
-support cli `easywebpack-cli` and extend `easywebpack-vue` building
+Support Cli Command Tool `easywebpack-cli` And Extend `easywebpack-vue` Build.
 
-### cli build
+## Cli Command Tool
 
 #### 1. Install cli `easywebpack-cli`
 
@@ -88,9 +88,10 @@ easywebpack build test
 easywebpack build prod
 ```
 
-Example: [easywebpack-vue-test](https://github.com/hubcarl/easywebpack-vue/tree/master/test)
+Example Test: [easywebpack-vue-test](https://github.com/hubcarl/easywebpack-vue/tree/master/test)
 
-### extend build
+
+### Extend Build
 
 #### 1. Webpack Common Config `base.js`
 
@@ -180,7 +181,6 @@ npm start
 
 
 ## Example
-
 
 ![webpack-vue-compile](https://github.com/hubcarl/easywebpack-vue/blob/master/doc/images/webpack-vue-compile.png)
 
