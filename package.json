@@ -14,6 +14,9 @@
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1"
   },
+  "peerDependencies": {
+    "vue-template-compiler": "^2.0.0"
+  },
   "devDependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
@@ -21,9 +24,9 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "css-loader": "^0.28.7",
     "chai": "^4.1.1",
     "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
     "eslint": "^4.5.0",
     "eslint-config-eslint": "^4.0.0",
     "mocha": "^3.5.0",
@@ -36,13 +39,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production node test/build",
-    "build-dev": "cross-env NODE_ENV=development node test/build",
-    "build-client": "cross-env BUILD_ENV=client npm run build",
-    "build-server": "cross-env BUILD_ENV=server npm run build",
-    "build-client-dev": "cross-env BUILD_ENV=client npm run build-dev",
-    "build-server-dev": "cross-env BUILD_ENV=server npm run build-dev",
-    "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build",
+    "build": "cross-env easywebpack build",
+    "start": "cross-env easywebpack server",
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "test": "mocha test",
