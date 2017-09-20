@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "3.0.0",
+  "version": "3.2.0",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,22 +8,26 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^3.0.0",
-    "eslint-plugin-vue": "^2.1.0",
-    "vue": "^2.4.2",
+    "easywebpack": "^3.2.0",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2"
+    "vue-style-loader": "^3.0.1"
+  },
+  "peerDependencies": {
+    "vue-template-compiler": "^2.0.0"
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.0",
     "chai": "^4.1.1",
     "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
     "eslint": "^4.5.0",
     "eslint-config-eslint": "^4.0.0",
     "mocha": "^3.5.0",
+    "vue": "^2.4.4",
     "vue-router": "^2.7.0",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.2.0"
@@ -32,13 +36,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production node test/build",
-    "build-dev": "cross-env NODE_ENV=development node test/build",
-    "build-client": "cross-env BUILD_ENV=client npm run build",
-    "build-server": "cross-env BUILD_ENV=server npm run build",
-    "build-client-dev": "cross-env BUILD_ENV=client npm run build-dev",
-    "build-server-dev": "cross-env BUILD_ENV=server npm run build-dev",
-    "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build",
+    "build": "cross-env easywebpack build -f build/webpack.config.js",
+    "start": "cross-env easywebpack server -f build/webpack.config.js",
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "test": "mocha test",
