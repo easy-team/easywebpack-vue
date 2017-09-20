@@ -23,18 +23,16 @@ exports.loaders = {
       fix: true
     }
   },
-  babel:{
-    options:{
-      presets: ['es2015', 'stage-2'],
+  babel: {
+    options: {
+      presets: ['env'],
       plugins: [
         'add-module-exports'
       ],
       comments: false
     }
   },
-  options:{
-
-  }
+  options: {}
 };
 
 exports.plugins = {};
