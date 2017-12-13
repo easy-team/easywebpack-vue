@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "3.3.0-beta.1",
+  "version": "3.2.2",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,7 +8,7 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^3.5.0-beta.1",
+    "easywebpack": "^3.4.2",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",
