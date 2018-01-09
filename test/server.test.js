@@ -138,4 +138,24 @@ describe('server.test.js', () => {
       expect(ssrchunk).to.be.undefined;
     });
   });
+
+  describe('#webpack alias test', () => {
+    it('should default vue alias test', () => {
+      const builder = createBuilder();
+      const webpackConfig = builder.create();
+      expect(webpackConfig.resolve.alias).to.have.property('vue');
+      expect(webpackConfig.resolve.alias['vue']).to.include('vue/dist/vue.runtime.common.js');
+    });
+
+    it('should config vue alias test', () => {
+      const builder = createBuilder({
+        alias:{
+          vue: 'vue/dist/vue.esm.js'
+        }
+      });
+      const webpackConfig = builder.create();
+      expect(webpackConfig.resolve.alias).to.have.property('vue');
+      expect(webpackConfig.resolve.alias['vue']).to.include('vue/dist/vue.esm.js');
+    });
+  });
 });
