@@ -8,4 +8,3 @@ exports.WebpackServerBuilder = require('./lib/server');
 exports.getWebpackConfig = (config, option) => {
   return EasyWebpack.WebpackBuilder.getWebpackConfig(config, [exports.WebpackClientBuilder, exports.WebpackServerBuilder], option);
 };
-
