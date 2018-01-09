@@ -16,6 +16,7 @@
     "new-cap": "off",
     "newline-after-var": "off",
     "no-invalid-this": "off",
+    "class-methods-use-this": "off",
     "quotes": [
       "error",
       "single"
