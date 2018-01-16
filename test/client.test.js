@@ -1,12 +1,18 @@
 'use strict';
+const path = require('path');
 const expect = require('chai').expect;
 const easywebpack = require('easywebpack');
 const webpack = easywebpack.webpack;
 const merge = easywebpack.merge;
 const WebpackClientBuilder = require('../lib/client');
-const path = require('path').posix;
 
 // http://chaijs.com/api/bdd/
+function createBaseBuilder(config) {
+  const builder = new WebpackClientBuilder(config);
+  builder.setBuildPath(path.join(__dirname, 'dist/client'));
+  builder.setPublicPath('/public');
+  return builder;
+}
 function createBuilder(config) {
   const builder = new WebpackClientBuilder(merge({
     entry: {
@@ -32,7 +38,7 @@ function getLoaderByName(name, rules) {
 
 function getPluginByLabel(label, plugins) {
   return plugins.find(plugin => {
-    return plugin.__lable__ === label || plugin.__plugin__ === 'html-webpack-plugin';
+    return plugin.__lable__ === label || plugin.__plugin__ === label;
   });
 }
 
@@ -211,5 +217,69 @@ describe('client.test.js', () => {
       expect(webpackConfig.resolve.alias['vue']).to.include('vue/dist/vue.esm.js');
     });
 
+  });
+
+  describe('#webpack typescript test', () => {
+    it('should default typescript enable test', () => {
+      const builder = createBuilder();
+      const webpackConfig = builder.create();
+      const tsLoader = getLoaderByName('ts', webpackConfig.module.rules);
+      expect(tsLoader).to.be.undefined;
+    });
+
+    it('should typescript enable test', () => {
+      const builder = createBuilder({
+        loaders:{
+          typescript: true
+        }
+      });
+      const webpackConfig = builder.create();
+      const tsLoader = getLoaderByName('ts', webpackConfig.module.rules);
+      expect(tsLoader.use[0].loader).to.equal('ts-loader');
+      expect(tsLoader.use[0].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
+    });
+
+    it('should typescript config test', () => {
+      const configFile = path.resolve(__dirname, './app/web/tsconfig.json');
+      const builder = createBuilder({
+        loaders:{
+          typescript: {
+            options:{
+              configFile,
+            }
+          }
+        }
+      });
+      const webpackConfig = builder.create();
+      const tsLoader = getLoaderByName('ts', webpackConfig.module.rules);
+      expect(tsLoader.use[0].loader).to.equal('ts-loader');
+      expect(tsLoader.use[0].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
+      expect(tsLoader.use[0].options.configFile).to.equal(configFile);
+    });
+
+    it('should tslint enable test', () => {
+      const builder = createBuilder({
+        loaders:{
+          tslint: true
+        }
+      });
+      const webpackConfig = builder.create();
+      const tsLoader = getLoaderByName('tslint', webpackConfig.module.rules);
+      expect(tsLoader.use[0].loader).to.equal('tslint-loader');
+    });
+  });
+
+  describe('#native webpack test', () => {
+    it('should default getWebpackConfig client test', () => {
+      const easywebpack = require('../');
+      const webpackConfig = easywebpack.getWebpackConfig({ type: 'client' });
+      expect(webpackConfig.target).to.equal('web');
+    });
+
+    it('should default getWebpackConfig server test', () => {
+      const easywebpack = require('../');
+      const webpackConfig = easywebpack.getWebpackConfig({ type: 'server' });
+      expect(webpackConfig.target).to.equal('node');
+    });
   });
 });

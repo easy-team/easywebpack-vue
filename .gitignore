@@ -13,3 +13,4 @@ public/
 config/buildConfig.json
 config/manifest.json
 .nyc_output
+package-lock.json
