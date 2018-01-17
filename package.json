@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "3.6.0-rc.3",
+  "version": "3.6.0",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,7 +8,7 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "next",
+    "easywebpack": "^3.6.0",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",
@@ -45,6 +45,7 @@
   "scripts": {
     "lint": "eslint .",
     "fix": "eslint --fix .",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "test": "nyc --reporter=html --reporter=text mocha --timeout=1000000",
     "cov": "nyc report --reporter=lcov > coverage.lcov && codecov --token=c193e626-f08f-41a7-b3e7-fdc39878892f",
     "ci": "npm run lint && npm run cov",
