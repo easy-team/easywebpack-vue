@@ -20,7 +20,18 @@
 [download-image]: https://img.shields.io/npm/dm/easywebpack-vue.svg?style=flat-square
 [download-url]: https://npmjs.org/package/easywebpack-vue
 
-Webpack3 (3.x.x) and Webpack2 (1.x.x) building solution for Vue, Support client render and server side render build.
+Webpack client render and server side render build solution for Vue
+
+## Featues
+
+![easywebpack](https://github.com/hubcarl/easywebpack/blob/master/docs/images/easywebpack.png)
+
+see [easywebpack](https://github.com/hubcarl/easywebpack)
+
+## Documents
+
+- http://hubcarl.github.io/easywebpack
+- https://zhuanlan.zhihu.com/easywebpack
 
 ## Install
 
@@ -30,163 +41,55 @@ $ npm i easywebpack-vue --save-dev
 
 ## Usage
 
-Support Cli Command Tool `easywebpack-cli` And Extend `easywebpack-vue` Build.
 
-## Cli Command Tool
-
-#### 1. Install cli `easywebpack-cli`
-
-```bash
-$ npm i easywebpack-cli -g
-```
-
-#### 2. Add `webpack.config.js` in project root dir
+### `webpack.config.js`
 
 ```js
-module.exports = {
-  framework: 'vue',
-  type: 'client',  // only build client render, default build client render and server render
-  entry: {
-    include: ['app/web/page'],
-    exclude: ['app/web/page/[a-z]+/component', 'app/web/page/test', 'app/web/page/html', 'app/web/page/app'],
-    template: 'app/web/view/layout.html'
-  },
-  alias: {
-    app: 'app/web/framework/vue/app.js',
-    asset: 'app/web/asset',
-    component: 'app/web/component',
-    framework: 'app/web/framework',
-    store: 'app/web/store'
-  },
-  loaders: {},
-  plugins: {
-    provide: false,
-    eslint: {
-      options: {
-        fix: true
-      }
+const easywebpack = require('easywebpack-vue');
+const webpack = easywebpack.webpack;
+const merge = easywebpack.merge;
+const baseWebpackConfig = easywebpack.getWebpackConfig({
+    env, // support dev, test, prod 
+    target : 'web', // browser mode build
+    entry:{
+        app: 'src/index.js'
     }
-  }
-};
+});
+module.exports = merge(baseWebpackConfig, {
+   
+})
 ```
 
-#### 3. Run
+### use `webpack` command build
 
 ```bash
-easywebpack server
-easywebpack server dev
-easywebpack server test
-easywebpack server prod
+webpack --config webpack.config.js
 ```
 
-#### 4. Build
-
-```bash
-easywebpack build
-easywebpack build dev
-easywebpack build test
-easywebpack build prod
-```
-
-Example Test: [easywebpack-vue-test](https://github.com/hubcarl/easywebpack-vue/tree/master/test)
-
-
-### Extend Build
-
-#### 1. Webpack Common Config `base.js`
+### base `easywebpacack-cli` build mode
 
 ```js
-'use strict';
-const path = require('path');
-const VueWebpack = require('easywebpack-vue');
-const merge = VueWebpack.merge;
-const baseDir = path.join(__dirname, '../../../');
-const webpackConfig = {
-  baseDir,
-  entry: {
-    include: 'app/web/page',
-    exclude: ['app/web/page/test'],
-    template: 'app/web/view/layout.html'
-  }
-};
-const WebpackBaseBuilder = WebpackBuilder => class extends WebpackBuilder {
-  constructor(config) {
-    super(merge(webpackConfig, config));
-    this.setEntry('vendor', ['vue']);
-    this.setAlias('asset', 'app/web/asset');
-    this.setAlias('component', 'app/web/component');
-    this.setAlias('framework', 'app/web/framework');
-    this.setAlias('store', 'app/web/store');
-    this.setAlias('app', 'app/web/framework/vue/app.js');
-  }
-};
-module.exports = WebpackBaseBuilder;
-```
-
-#### 2. Webpack Browser Config `client.js`
-
-```js
-'use strict';
-const VueWebpack = require('easywebpack-vue');
-const WebpackClientBuilder = VueWebpack.WebpackClientBuilder;
-const WebpackBaseBuilder = require('../base');
-class ClientBuilder extends WebpackBaseBuilder(WebpackClientBuilder) {
-}
-module.exports = new ClientBuilder().create();
-```
-
-#### 3. Webpack Node SSR Config `server.js`
-
-```js
-'use strict';
-const VueWebpack = require('easywebpack-vue');
-const WebpackServerBuilder = VueWebpack.WebpackServerBuilder;
-const WebpackBaseBuilder = require('../base');
-class ServerBuilder extends WebpackBaseBuilder(WebpackServerBuilder) {
-}
-module.exports = new ServerBuilder().create();
-```
-
-#### 4. Run Entry File `build.js`
-
-```js
-const VueWebpack = require('easywebpack-vue');
-const clientConfig = require('./client');
-const serverConfig = require('./server');
-const config = [clientConfig, serverConfig]
+const webpackConfig = require('./webpack.config.js');
 
 if (process.env.NODE_SERVER) {
   // development mode: webpack building and start webpack hot server
-  VueWebpack.server(config);
+  easywebpack.server(config);
 } else {
   // build file to disk
-  VueWebpack.build(config);
+  easywebpack.build(config);
 }
-```
-
-#### 5. Run
-
-```js
-{
-  "scripts": {
-    "build": "cross-env NODE_ENV=production node test/build",
-    "start": "cross-env NODE_SERVER=true NODE_ENV=development node test/build"
-   }
-}
-```
-
-```bash
-npm start
 ```
 
 
 ## Example
 
-![webpack-vue-compile](https://github.com/hubcarl/easywebpack-vue/blob/master/doc/images/webpack-vue-compile.png)
+- [vue-client-render-boilerplate](https://github.com/hubcarl/easywebpack-cli-template/tree/master/boilerplate/vue) Vue client render boilerplate.
 
-![webpack-vue-debug](https://github.com/hubcarl/easywebpack-vue/blob/master/doc/images/webpack-vue-debug.png)
+- [egg-vue-webpack-boilerplate](https://github.com/hubcarl/egg-vue-webpack-boilerplate) support client render and server render.
 
-see [vue server side render example](test/web) and [vue webpack build config](test/build)  for more detail.
+- [egg-vue-typescript-boilerplate](https://github.com/hubcarl/egg-vue-typescript-boilerplate) Egg + TypeScript + Vue server render boilerplate.
+
+- you can use [easywebpack-cli](https://github.com/hubcarl/easywebpack-cli) create client render project or create server side render project for vue.
 
 ## Questions & Suggestions
 
