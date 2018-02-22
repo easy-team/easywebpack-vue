@@ -56,39 +56,37 @@ describe('client.test.js', () => {
   });
 
   describe('#webpack framework test', () => {
-    it('should vue framework merge test', () => {
-      const vueLoaderConfig = {
-        vue: {
-          test: /\.vue$/,
-          exclude: /node_modules/,
-          use() {
-            return [
-              {
-                loader: 'vue-loader',
-                options: this.createFrameworkLoader('vue-style-loader')
-              }
-            ];
-          }
-        },
-        vuehtml: {
-          test: /\.html$/,
-          use: ['vue-html-loader']
-        }
-      };
+    it('should vue framework test', () => {
       const builder = createBuilder({});
-      builder.mergeLoader(vueLoaderConfig);
       const webpackConfig = builder.create();
       const rules = webpackConfig.module.rules;
       const vueLoader = getLoaderByName('vue', rules);
       const vuehtml = getLoaderByName('vue-html', rules);
       expect(vueLoader.use[0].loader).to.equal('vue-loader');
-      expect(vueLoader.use[0].options).to.include.all.keys(['preLoaders', 'loaders']);
+      expect(vueLoader.use[0].options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
       expect(vuehtml.use[0].loader).to.equal('vue-html-loader');
+    });
+
+    it('should vue loader options transformToRequire test', () => {
+      const builder = createBuilder({
+        loaders:{
+          vue: {
+            options: { transformToRequire: { img: ['url', 'src'] } }
+          }
+        }
+      });
+      const webpackConfig = builder.create();
+      const rules = webpackConfig.module.rules;
+      const vueLoader = getLoaderByName('vue', rules);
+      const options = vueLoader.use[0].options;
+      console.log(options);
+      expect(vueLoader.use[0].loader).to.equal('vue-loader');
+      expect(options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
     });
 
     it('should egg test', () => {
       const builder = createBuilder({ egg: true });
-      expect(builder.config.proxy).to.true;
+      expect(builder.proxy).to.true;
     });
   });
 
@@ -129,23 +127,17 @@ describe('client.test.js', () => {
   });
 
   describe('#webpack publicPath test', () => {
-    const cdnUrl = 'http://easywebpack.cn/public';
+    const cdnUrl = 'http://easywebpack.cn';
     it('should dev cdn config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl} });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/');
+      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/public/');
     });
     it('should dev cdn dynamicDir config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl, dynamicDir: 'cdn'} });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/cdn/');
+      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/cdn/public/');
     });
-    it('should dev cdn config test', () => {
-      const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl} });
-      const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/');
-    });
-
     it('should dev publicPath abspath config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', publicPath: cdnUrl });
       const webpackConfig = builder.create();
@@ -159,9 +151,9 @@ describe('client.test.js', () => {
     });
 
     it('should dev publicPath useHost false config test', () => {
-      const builder = createBuilder({ debug: true, env: 'dev', publicPath: '/static', useHost: false });
+      const builder = createBuilder({ debug: true, env: 'dev', publicPath: '/static' });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal('/static/');
+      expect(webpackConfig.output.publicPath).to.equal(`${builder.host}/static/`);
     });
 
     it('should dev publicPath default env prod config test', () => {
