@@ -1,3 +1,14 @@
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/hubcarl/easywebpack-vue/compare/3.6.0...4.0.0) (2018-03-07)
+
+
+### Features
+
+* webpack 4 support [BREAK_CHANGE]
+* default set vue transformToRequire: { img: [url, src] } ([712ba8e](https://github.com/hubcarl/easywebpack-vue/commit/712ba8e))
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/hubcarl/easywebpack-vue/compare/3.5.1...3.6.0) (2018-01-17)
 
