@@ -79,7 +79,6 @@ describe('client.test.js', () => {
       const rules = webpackConfig.module.rules;
       const vueLoader = getLoaderByName('vue', rules);
       const options = vueLoader.use[0].options;
-      console.log(options);
       expect(vueLoader.use[0].loader).to.equal('vue-loader');
       expect(options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
     });
@@ -147,13 +146,7 @@ describe('client.test.js', () => {
     it('should dev publicPath config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', publicPath: '/static' });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(builder.host + '/static/');
-    });
-
-    it('should dev publicPath useHost false config test', () => {
-      const builder = createBuilder({ debug: true, env: 'dev', publicPath: '/static' });
-      const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(`${builder.host}/static/`);
+      expect(webpackConfig.output.publicPath).to.equal('/static/');
     });
 
     it('should dev publicPath default env prod config test', () => {
@@ -174,7 +167,7 @@ describe('client.test.js', () => {
       const builder = createBuilder({ env: 'dev', lib: ['mocha'] });
       const webpackConfig = builder.create();
       const commonsChunks = webpackConfig.plugins.filter(plugin =>{
-        return plugin.constructor.name === 'CommonsChunkPlugin';
+        return plugin.constructor.name === 'SplitChunksPlugin' || plugin.constructor.name === 'RuntimeChunkPlugin';
       });
       expect(webpackConfig.entry).to.have.property('common');
       expect(commonsChunks.length).to.equal(2);
