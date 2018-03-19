@@ -1,3 +1,13 @@
+<a name="4.0.1"></a>
+## [4.0.1](https://github.com/hubcarl/easywebpack-vue/compare/4.0.0...4.0.1) (2018-03-19)
+
+
+### Bug Fixes
+
+* typescript options merge ([014029a](https://github.com/hubcarl/easywebpack-vue/commit/014029a))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/hubcarl/easywebpack-vue/compare/3.6.0...4.0.0) (2018-03-07)
 
