@@ -82,7 +82,7 @@ describe('server.test.js', () => {
     });
 
     it('should egg test', () => {
-      const builder = createBuilder({ egg: true, baseDir: path.join(__dirname, '..') });
+      const builder = new WebpackServerBuilder({ egg: true, baseDir: path.join(__dirname, '..') });
       const webpackConfig = builder.create();
       expect(webpackConfig.output.path).to.equal(path.join(__dirname, '../app/view'));
     });

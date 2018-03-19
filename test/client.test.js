@@ -36,6 +36,15 @@ function getLoaderByName(name, rules) {
   });
 }
 
+function getLoadersByName(name, rules) {
+  const loaderName = `${name}-loader`;
+  return rules.filter(rule => {
+    return rule.use.some(loader => {
+      return loaderName === loader || (typeof loader === 'object' && loader.loader === loaderName);
+    });
+  });
+}
+
 function getPluginByLabel(label, plugins) {
   return plugins.find(plugin => {
     return plugin.__lable__ === label || plugin.__plugin__ === label;
@@ -138,7 +147,7 @@ describe('client.test.js', () => {
     it('should dev cdn dynamicDir config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl, dynamicDir: 'cdn'} });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/cdn/');
+      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/cdn/public/');
     });
     it('should dev cdn config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl} });
@@ -280,6 +289,37 @@ describe('client.test.js', () => {
       const easywebpack = require('../');
       const webpackConfig = easywebpack.getWebpackConfig({ type: 'server' });
       expect(webpackConfig.target).to.equal('node');
+    });
+  });
+  describe('#webpack cache loader test', () => {
+    it('should create babel cache loader test', () => {
+      const builder = createBuilder();
+      const webpackConfig = builder.create();
+      const cacheLoader = getLoadersByName('cache', webpackConfig.module.rules);
+      expect(cacheLoader.length).to.equal(0);
+    });
+    it('should create babel cache loader test', () => {
+      const builder = createBuilder({
+        cache: true,
+      });
+      const webpackConfig = builder.create();
+      const cacheLoader = getLoadersByName('cache', webpackConfig.module.rules);
+      console.log(cacheLoader[0].use);
+      expect(cacheLoader.length).to.equal(1);
+      expect(!!cacheLoader[0].use[0].options.cacheDirectory).to.be.true;
+      expect(cacheLoader[0].use[0].loader).to.equal('cache-loader');
+      expect(cacheLoader[0].use[1].loader).to.equal('babel-loader');
+    });
+    it('should create babel cache loader test', () => {
+      const builder = createBuilder({
+        cache: true,
+        loaders:{
+          typescript: true
+        }
+      });
+      const webpackConfig = builder.create();
+      const cacheLoader = getLoadersByName('cache', webpackConfig.module.rules);
+      expect(cacheLoader.length).to.equal(2);
     });
   });
 });
