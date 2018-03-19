@@ -18,9 +18,6 @@ exports.vuehtml = {
 };
 
 exports.typescript = {
-  enable: false,
-  options: {
-    appendTsSuffixTo: [/\.vue$/]
-  }
+  enable: false
 };
 
