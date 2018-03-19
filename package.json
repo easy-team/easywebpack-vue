@@ -8,7 +8,7 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^3.8.0",
+    "easywebpack": "^3.8.1",
     "vue-hot-reload-api": "^2.1.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.0.4",

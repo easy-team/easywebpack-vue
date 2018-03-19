@@ -1,3 +1,13 @@
+<a name="3.7.1"></a>
+## [3.7.1](https://github.com/hubcarl/easywebpack-vue/compare/3.7.0...3.7.1) (2018-03-19)
+
+
+### Bug Fixes
+
+* cache loader option config ([8858d05](https://github.com/hubcarl/easywebpack-vue/commit/8858d05))
+
+
+
 <a name="3.7.0"></a>
 # [3.7.0](https://github.com/hubcarl/easywebpack-vue/compare/3.6.0...3.7.0) (2018-03-19)
 
