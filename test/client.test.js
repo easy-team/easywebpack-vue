@@ -304,7 +304,6 @@ describe('client.test.js', () => {
       });
       const webpackConfig = builder.create();
       const cacheLoader = getLoadersByName('cache', webpackConfig.module.rules);
-      console.log(cacheLoader[0].use);
       expect(cacheLoader.length).to.equal(1);
       expect(!!cacheLoader[0].use[0].options.cacheDirectory).to.be.true;
       expect(cacheLoader[0].use[0].loader).to.equal('cache-loader');

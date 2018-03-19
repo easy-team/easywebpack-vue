@@ -1,3 +1,13 @@
+<a name="3.7.0"></a>
+# [3.7.0](https://github.com/hubcarl/easywebpack-vue/compare/3.6.0...3.7.0) (2018-03-19)
+
+
+### Features
+
+* support cache-loader ([4b4d21b](https://github.com/hubcarl/easywebpack-vue/commit/4b4d21b))
+
+
+
 <a name="3.6.0"></a>
 # [3.6.0](https://github.com/hubcarl/easywebpack-vue/compare/3.5.1...3.6.0) (2018-01-17)
 
