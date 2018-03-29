@@ -9,7 +9,7 @@ class VueSSRDynamicChunkPlugin {
   }
 
   apply(compiler) {
-    compiler.plugin('emit', (compilation, callback) => {
+    compiler.hooks.emit.tap('VueSSRDynamicChunkPlugin', (compilation, callback) => {
       const buildPath = compilation.options.output.path;
       compilation.chunks.forEach(chunk => {
         if (this.opts.chunk && chunk.name === null) {
@@ -21,7 +21,7 @@ class VueSSRDynamicChunkPlugin {
           });
         }
       });
-      callback();
+      callback && callback();
     });
   }
 }
