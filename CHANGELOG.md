@@ -1,3 +1,18 @@
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/hubcarl/easywebpack-vue/compare/4.0.4...4.1.1) (2018-08-29)
+
+
+### Bug Fixes
+
+* 修复异步 chunk 判断逻辑 ([95a882a](https://github.com/hubcarl/easywebpack-vue/commit/95a882a))
+
+
+### Features
+
+* upgrade webpack latest version for mini-css-extract-plugin ([221e955](https://github.com/hubcarl/easywebpack-vue/commit/221e955))
+
+
+
 <a name="4.0.1"></a>
 ## [4.0.1](https://github.com/hubcarl/easywebpack-vue/compare/4.0.0...4.0.1) (2018-03-19)
 
