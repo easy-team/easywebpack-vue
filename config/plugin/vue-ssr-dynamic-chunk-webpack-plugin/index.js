@@ -14,7 +14,7 @@ class VueSSRDynamicChunkPlugin {
       const chunkPath = path.join(buildPath, 'node_modules'); 
          
       if (!fs.existsSync(chunkPath)) {
-        mkdirp.sync(path.dirname(chunkPath));
+        mkdirp.sync(chunkPath);
       }
       
       compilation.chunks.forEach(chunk => {
