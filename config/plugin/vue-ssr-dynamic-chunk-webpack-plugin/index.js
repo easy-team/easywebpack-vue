@@ -12,14 +12,28 @@ class VueSSRDynamicChunkPlugin {
     compiler.hooks.emit.tap('VueSSRDynamicChunkPlugin', (compilation, callback) => {
       const buildPath = compilation.options.output.path;
       compilation.chunks.forEach(chunk => {
-        if (this.opts.chunk && chunk.name === null) {
-          chunk.files.forEach(filename => {
+        if (!this.opts.chunk) {
+          return;
+        }
+
+        const asyncChunks = chunk.getAllAsyncChunks();
+
+        if (asyncChunks.size < 1) {
+          return;
+        }
+
+        asyncChunks.forEach(asyncChunk => {
+          asyncChunk.files.forEach(filename => {
             const filepath = path.join(buildPath, 'node_modules', filename);
+            
+            if (!fs.existsSync(filepath)) {
+              mkdirp.sync(path.dirname(filepath));
+            }
+            
             const source = compilation.assets[filename].source();
-            mkdirp.sync(path.dirname(filepath));
             fs.writeFileSync(filepath, source, 'utf8');
           });
-        }
+        })
       });
       callback && callback();
     });
