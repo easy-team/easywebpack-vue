@@ -11,6 +11,12 @@ class VueSSRDynamicChunkPlugin {
   apply(compiler) {
     compiler.hooks.emit.tap('VueSSRDynamicChunkPlugin', (compilation, callback) => {
       const buildPath = compilation.options.output.path;
+      const chunkPath = path.join(buildPath, 'node_modules'); 
+         
+      if (!fs.existsSync(chunkPath)) {
+        mkdirp.sync(path.dirname(chunkPath));
+      }
+      
       compilation.chunks.forEach(chunk => {
         if (!this.opts.chunk) {
           return;
@@ -18,18 +24,9 @@ class VueSSRDynamicChunkPlugin {
 
         const asyncChunks = chunk.getAllAsyncChunks();
 
-        if (asyncChunks.size < 1) {
-          return;
-        }
-
-        asyncChunks.forEach(asyncChunk => {
+        asyncChunks && asyncChunks.forEach(asyncChunk => {
           asyncChunk.files.forEach(filename => {
-            const filepath = path.join(buildPath, 'node_modules', filename);
-            
-            if (!fs.existsSync(filepath)) {
-              mkdirp.sync(path.dirname(filepath));
-            }
-            
+            const filepath = path.join(chunkPath, filename);
             const source = compilation.assets[filename].source();
             fs.writeFileSync(filepath, source, 'utf8');
           });
