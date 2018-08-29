@@ -1,3 +1,13 @@
+<a name="4.1.2"></a>
+## [4.1.2](https://github.com/hubcarl/easywebpack-vue/compare/4.1.1...4.1.2) (2018-08-29)
+
+
+### Bug Fixes
+
+* 修复创建文件路径错误 ([e9ee20c](https://github.com/hubcarl/easywebpack-vue/commit/e9ee20c))
+
+
+
 <a name="4.1.1"></a>
 ## [4.1.1](https://github.com/hubcarl/easywebpack-vue/compare/4.0.4...4.1.1) (2018-08-29)
 
