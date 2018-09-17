@@ -130,10 +130,10 @@ describe('client.test.js', () => {
     it('should dev cdn config test', () => {
       const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl} });
       const webpackConfig = builder.create();
-      expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/public/');
+      expect(webpackConfig.output.publicPath).to.equal('/public/');
     });
-    it('should dev cdn dynamicDir config test', () => {
-      const builder = createBuilder({ debug: true, env: 'dev', cdn: { url: cdnUrl, dynamicDir: 'cdn'} });
+    it('should test cdn dynamicDir config test', () => {
+      const builder = createBuilder({ debug: true, env: 'test', cdn: { url: cdnUrl, dynamicDir: 'cdn'} });
       const webpackConfig = builder.create();
       expect(webpackConfig.output.publicPath).to.equal(cdnUrl + '/cdn/public/');
     });
@@ -257,14 +257,37 @@ describe('client.test.js', () => {
   describe('#native webpack test', () => {
     it('should default getWebpackConfig client test', () => {
       const easywebpack = require('../');
-      const webpackConfig = easywebpack.getWebpackConfig({ type: 'client' });
+      const webpackConfig = easywebpack.getWebpackConfig({ target: 'web' });
       expect(webpackConfig.target).to.equal('web');
     });
 
     it('should default getWebpackConfig server test', () => {
       const easywebpack = require('../');
-      const webpackConfig = easywebpack.getWebpackConfig({ type: 'server' });
+      const webpackConfig = easywebpack.getWebpackConfig({ target: 'node' });
       expect(webpackConfig.target).to.equal('node');
+    });
+  });
+  describe('#native webpack vue entry set test', () => {
+    it('should glob entry test', () => {
+      const easywebpack = require('../');
+      const webpackConfig = easywebpack.getWebpackConfig({
+        target: 'web',
+        entry: 'lib/*.js',
+      });
+      expect(webpackConfig.target).to.equal('web');
+      expect(webpackConfig.entry['base']).to.include(path.join(process.cwd(), 'lib/base.js'));
+      expect(webpackConfig.entry['client']).to.include(path.join(process.cwd(), 'lib/client.js'));
+    });
+    it('should object entry test', () => {
+      const easywebpack = require('../');
+      const webpackConfig = easywebpack.getWebpackConfig({
+        target: 'web',
+        entry:  {
+          base: 'lib/base.js',
+          client: 'lib/client.js'
+        },
+      });
+      expect(webpackConfig.entry['base']).to.include('lib/base.js');
     });
   });
 });
