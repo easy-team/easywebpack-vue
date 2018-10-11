@@ -54,21 +54,21 @@
       "**/*.spec.js",
       "index.js",
       "config/*.js",
-      "config/plugin/**.js",
+      "config/plugin/**/*.js",
       "test/*.test.js"
     ]
   },
   "ci": {
-    "version": "6, 8"
+    "version": "6, 8, 10"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hubcarl/easywebpack-vue.git"
+    "url": "git+https://github.com/easy-team/easywebpack-vue.git"
   },
   "bugs": {
-    "url": "https://github.com/hubcarl/easywebpack-vue/issues"
+    "url": "https://github.com/easy-team/easywebpack-vue/issues"
   },
-  "homepage": "https://github.com/hubcarl/easywebpack-vue#readme",
+  "homepage": "https://github.com/easy-team/easywebpack-vue#readme",
   "author": "hubcarl@126.com",
   "license": "MIT"
 }

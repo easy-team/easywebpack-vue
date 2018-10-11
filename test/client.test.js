@@ -287,7 +287,7 @@ describe('client.test.js', () => {
           client: 'lib/client.js'
         },
       });
-      expect(webpackConfig.entry['base']).to.include('lib/base.js');
+      expect(webpackConfig.entry['base'].length).to.equal(2);
     });
   });
 });
