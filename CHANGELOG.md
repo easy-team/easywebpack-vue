@@ -1,3 +1,13 @@
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/easy-team/easywebpack-vue/compare/4.2.0...4.2.1) (2018-10-12)
+
+
+### Bug Fixes
+
+* deps easywebpack@next to easywebpack@4.8.0 ([e668011](https://github.com/easy-team/easywebpack-vue/commit/e668011))
+
+
+
 <a name="4.1.2"></a>
 ## [4.1.2](https://github.com/hubcarl/easywebpack-vue/compare/4.1.1...4.1.2) (2018-08-29)
 
