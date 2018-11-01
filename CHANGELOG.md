@@ -1,3 +1,13 @@
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/easy-team/easywebpack-vue/compare/4.2.1...4.3.0) (2018-11-01)
+
+
+
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/easy-team/easywebpack-vue/compare/4.2.1...4.3.0) (2018-11-01)
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/easy-team/easywebpack-vue/compare/4.2.0...4.2.1) (2018-10-12)
 

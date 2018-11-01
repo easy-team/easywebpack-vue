@@ -220,8 +220,8 @@ describe('client.test.js', () => {
       });
       const webpackConfig = builder.create();
       const tsLoader = getLoaderByName('ts', webpackConfig.module.rules);
-      expect(tsLoader.use[0].loader).to.equal('ts-loader');
-      expect(tsLoader.use[0].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
+      expect(tsLoader.use[2].loader).to.equal('ts-loader');
+      expect(tsLoader.use[2].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
     });
 
     it('should typescript config test', () => {
@@ -237,9 +237,9 @@ describe('client.test.js', () => {
       });
       const webpackConfig = builder.create();
       const tsLoader = getLoaderByName('ts', webpackConfig.module.rules);
-      expect(tsLoader.use[0].loader).to.equal('ts-loader');
-      expect(tsLoader.use[0].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
-      expect(tsLoader.use[0].options.configFile).to.equal(configFile);
+      expect(tsLoader.use[2].loader).to.equal('ts-loader');
+      expect(tsLoader.use[2].options.toString()).to.equal({ appendTsSuffixTo: [/\.vue$/] }.toString());
+      expect(tsLoader.use[2].options.configFile).to.equal(configFile);
     });
 
     it('should tslint enable test', () => {
