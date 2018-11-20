@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "4.3.0-next",
+  "version": "4.4.0-next",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
