@@ -19,7 +19,10 @@ exports.vuehtml = {
   use: ['vue-html-loader']
 };
 
-exports.typescript = {
-  enable: false
+exports.ts = {
+  enable: false,
+  options: {
+    appendTsSuffixTo: [/\.vue$/]
+  }
 };
 

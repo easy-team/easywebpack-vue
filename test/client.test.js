@@ -70,6 +70,7 @@ describe('client.test.js', () => {
     it('should vue loader options transformToRequire test', () => {
       const builder = createBuilder({
         loaders:{
+          ts: true,
           vue: {
             options: { transformToRequire: { img: ['url', 'src'] } }
           }
@@ -81,6 +82,7 @@ describe('client.test.js', () => {
       const options = vueLoader.use[0].options;
       expect(vueLoader.use[0].loader).to.equal('vue-loader');
       expect(options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
+      expect(options.loaders).to.include.all.keys(['js', 'css', 'ts']);
     });
 
     it('should egg test', () => {
@@ -159,18 +161,6 @@ describe('client.test.js', () => {
       const builder = createBuilder({ debug: true, env: 'test', publicPath: '/static' });
       const webpackConfig = builder.create();
       expect(webpackConfig.output.publicPath).to.equal('/static/');
-    });
-  });
-
-  describe('#webpack commonsChunk test', () => {
-    it('should dev cdn config test', () => {
-      const builder = createBuilder({ env: 'dev', lib: ['mocha'] });
-      const webpackConfig = builder.create();
-      const commonsChunks = webpackConfig.plugins.filter(plugin =>{
-        return plugin.constructor.name === 'SplitChunksPlugin' || plugin.constructor.name === 'RuntimeChunkPlugin';
-      });
-      expect(webpackConfig.entry).to.have.property('common');
-      expect(commonsChunks.length).to.equal(2);
     });
   });
 
