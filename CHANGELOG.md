@@ -1,3 +1,13 @@
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/easy-team/easywebpack-vue/compare/4.3.0...4.4.0) (2018-11-21)
+
+
+### Features
+
+* support webpack native config ([778b041](https://github.com/easy-team/easywebpack-vue/commit/778b041))
+
+
+
 <a name="4.3.0"></a>
 # [4.3.0](https://github.com/easy-team/easywebpack-vue/compare/4.2.1...4.3.0) (2018-11-01)
 
