@@ -63,26 +63,7 @@ describe('client.test.js', () => {
       const vueLoader = getLoaderByName('vue', rules);
       const vuehtml = getLoaderByName('vue-html', rules);
       expect(vueLoader.use[0].loader).to.equal('vue-loader');
-      expect(vueLoader.use[0].options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
       expect(vuehtml.use[0].loader).to.equal('vue-html-loader');
-    });
-
-    it('should vue loader options transformToRequire test', () => {
-      const builder = createBuilder({
-        loaders:{
-          ts: true,
-          vue: {
-            options: { transformToRequire: { img: ['url', 'src'] } }
-          }
-        }
-      });
-      const webpackConfig = builder.create();
-      const rules = webpackConfig.module.rules;
-      const vueLoader = getLoaderByName('vue', rules);
-      const options = vueLoader.use[0].options;
-      expect(vueLoader.use[0].loader).to.equal('vue-loader');
-      expect(options).to.include.all.keys(['preLoaders', 'loaders', 'transformToRequire']);
-      expect(options.loaders).to.include.all.keys(['js', 'css', 'ts']);
     });
 
     it('should egg test', () => {

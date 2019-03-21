@@ -77,7 +77,6 @@ describe('server.test.js', () => {
       const vueLoader = getLoaderByName('vue', rules);
       const vuehtml = getLoaderByName('vue-html', rules);
       expect(vueLoader.use[0].loader).to.equal('vue-loader');
-      expect(vueLoader.use[0].options).to.include.all.keys(['preLoaders', 'loaders']);
       expect(vuehtml.use[0].loader).to.equal('vue-html-loader');
     });
 

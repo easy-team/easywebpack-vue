@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "4.4.0",
+  "version": "4.5.0",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -8,27 +8,27 @@
     "vue"
   ],
   "dependencies": {
-    "easywebpack": "^4.11.0",
-    "vue-entry-loader": "^1.0.0",
+    "easywebpack": "^4.11.5",
+    "vue-entry-loader": "^1.1.2",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^14.1.1",
-    "vue-template-compiler": "^2.5.13"
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
-    "babel-preset-env": "^1.6.0",
-    "chai": "^4.1.1",
-    "codecov": "^3.0.0",
-    "cross-env": "^5.0.5",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.5.0",
-    "eslint-config-eslint": "^4.0.0",
-    "mocha": "^3.5.0",
-    "nyc": "^11.1.0",
-    "vue": "^2.4.4",
-    "vue-router": "^2.7.0",
-    "vuex": "^2.3.1",
-    "vuex-router-sync": "^4.2.0"
+    "axios": "^0.18.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "codecov": "^3.2.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.15.3",
+    "eslint-config-eslint": "^5.0.1",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.1.0",
+    "vuex-router-sync": "^5.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
