@@ -1,3 +1,13 @@
+# [4.5.0](https://github.com/easy-team/easywebpack-vue/compare/4.3.0...4.5.0) (2019-03-21)
+
+
+### Features
+
+* support webpack native config ([778b041](https://github.com/easy-team/easywebpack-vue/commit/778b041))
+* vue-loader@14 to vue-loader@15 ([4342403](https://github.com/easy-team/easywebpack-vue/commit/4342403))
+
+
+
 <a name="4.4.0"></a>
 # [4.4.0](https://github.com/easy-team/easywebpack-vue/compare/4.3.0...4.4.0) (2018-11-21)
 
