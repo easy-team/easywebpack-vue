@@ -33,10 +33,16 @@ see [easywebpack](https://github.com/easy-team/easywebpack)
 - https://www.yuque.com/easy-team/easywebpack
 - https://zhuanlan.zhihu.com/easywebpack
 
+## Version
+
+- @easy-team/easywebpack-vue ^4.x.x > Webpack 4.x.x + Babel 7 
+- easywebpack-vue ^4.x.x > Webpack 4.x.x + Babel 6
+- easywebpack-vue ^3.x.x > Webpack 3.x.x + Babel 6
+
 ## Install
 
 ```bash
-$ npm i easywebpack-vue --save-dev
+$ npm i @easy-team/easywebpack-vue --save-dev
 ```
 
 ## Usage
@@ -45,7 +51,7 @@ $ npm i easywebpack-vue --save-dev
 ### `webpack.config.js`
 
 ```js
-const easywebpack = require('easywebpack-vue');
+const easywebpack = require('@easy-team/easywebpack-vue');
 const webpack = easywebpack.webpack;
 const merge = easywebpack.merge;
 const baseWebpackConfig = easywebpack.getWebpackConfig({
