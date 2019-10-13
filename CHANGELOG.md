@@ -1,3 +1,20 @@
+# [4.1.0](https://github.com/easy-team/easywebpack-vue/compare/4.3.0...4.1.0) (2019-10-13)
+
+
+### Bug Fixes
+
+* .babelrc config for babel 7 ([e9c3da2](https://github.com/easy-team/easywebpack-vue/commit/e9c3da2))
+
+
+### Features
+
+* .babelrc to babel.config.js ([774411b](https://github.com/easy-team/easywebpack-vue/commit/774411b))
+* support webpack native config ([778b041](https://github.com/easy-team/easywebpack-vue/commit/778b041))
+* upgrade babel 6 to babel7, publish @easy-team/easywebpack-vue mode ([901199f](https://github.com/easy-team/easywebpack-vue/commit/901199f))
+* vue-loader@14 to vue-loader@15 ([4342403](https://github.com/easy-team/easywebpack-vue/commit/4342403))
+
+
+
 ## [4.0.1](https://github.com/easy-team/easywebpack-vue/compare/4.3.0...4.0.1) (2019-10-10)
 
 
