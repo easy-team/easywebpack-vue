@@ -42,7 +42,7 @@ see [easywebpack](https://github.com/easy-team/easywebpack)
 ## Install
 
 ```bash
-$ npm i @easy-team/easywebpack-vue --save-dev
+$ npm i easywebpack-vue --save-dev
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ $ npm i @easy-team/easywebpack-vue --save-dev
 ### `webpack.config.js`
 
 ```js
-const easywebpack = require('@easy-team/easywebpack-vue');
+const easywebpack = require('easywebpack-vue');
 const webpack = easywebpack.webpack;
 const merge = easywebpack.merge;
 const baseWebpackConfig = easywebpack.getWebpackConfig({
