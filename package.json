@@ -1,6 +1,6 @@
 {
   "name": "easywebpack-vue",
-  "version": "5.0.0-beta.1",
+  "version": "5.0.0-beta.2",
   "description": "vue webpack building solution for easywebpack",
   "keywords": [
     "webpack",
@@ -61,6 +61,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/easy-team/easywebpack-vue.git"
+  },
+  "publishConfig": {
+    "tag": "5x"
   },
   "bugs": {
     "url": "https://github.com/easy-team/easywebpack-vue/issues"

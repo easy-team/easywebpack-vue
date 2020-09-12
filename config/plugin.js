@@ -13,3 +13,6 @@ exports.vueloader = {
   name: new VueLoaderPlugin()
 };
 
+exports.extract = {
+  env: ['dev', 'test', 'prod'],
+};
