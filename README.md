@@ -22,6 +22,10 @@
 
 Webpack client render and server side render build solution for Vue
 
+## Webapck 5 
+
+https://github.com/easy-team/easywebpack/tree/master/packages/framework/easywebpack-vue
+
 ## Featues
 
 ![easywebpack](https://github.com/easy-team/easywebpack/blob/master/docs/images/easywebpack.png)
